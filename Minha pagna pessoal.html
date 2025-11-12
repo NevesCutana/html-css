@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neves Sergio Cutana - Página Pessoal</title>
+  <style>
+    :root {
+      --bg: #f8f9fb;
+      --text: #222;
+      --accent: #00bcd4;
+      --nav: rgba(0,0,50,0.9);
+      --card: #fff;
+      --shadow: rgba(0,0,0,0.1);
+    }
+
+    body.dark {
+      --bg: #0f172a;
+      --text: #f8fafc;
+      --accent: #38bdf8;
+      --nav: rgba(15, 23, 42, 0.95);
+      --card: #1e293b;
+      --shadow: rgba(255,255,255,0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.4s, color 0.4s;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--nav);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    nav h1 {
+      font-size: 1.4em;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: var(--accent);
+    }
+
+    #darkToggle {
+      cursor: pointer;
+      background: none;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    #darkToggle:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=1600&q=60') center/cover fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      animation: fadeIn 1.5s ease;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+    }
+
+    .hero h2 {
+      font-size: 2.8em;
+      background: rgba(0,0,0,0.5);
+      padding: 15px 30px;
+      border-radius: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== SOBRE ===== */
+    .sobre {
+      padding: 120px 10%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+    
+    /* MODIFICAÇÃO: Torna o perfil clicável */
+    .perfil {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      border: 4px solid var(--accent);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      cursor: pointer; /* Adicionado */
+    }
+
+    .perfil:hover {
+      transform: scale(1.05);
+    }
+
+    .sobre-texto {
+      max-width: 600px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .sobre-texto h2 {
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    .sobre-texto p {
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+
+    /* ===== PARALLAX ===== */
+    .parallax-bloco {
+      height: 450px;
+      background-image: url('imagem/F16 C  foto.jpeg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .parallax-bloco h3 {
+      color: #fff;
+      font-size: 2.5em;
+      background: rgba(0, 0, 0, 0.65);
+      padding: 20px 30px;
+      border-radius: 10px;
+      animation: fadeIn 2s ease;
+    }
+
+    /* ===== PARALLAX DE APRENDIZADO ===== */
+    .aprendizado {
+      height: 500px;
+      background-image: url('imagem/comp2.jpeg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .aprendizado::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+    }
+
+    .aprendizado h2,
+    .aprendizado p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .aprendizado h2 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      color: var(--accent);
+    }
+
+    .aprendizado p {
+      font-size: 1.2em;
+      max-width: 700px;
+      line-height: 1.8;
+    }
+
+    /* ===== PROJETOS ===== */
+    .projetos {
+      padding: 100px 10%;
+      text-align: center;
+    }
+
+    .projetos h2 {
+      margin-bottom: 40px;
+      color: var(--accent);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 10px;
+      box-shadow: 0 3px 10px var(--shadow);
+      padding: 20px;
+      text-align: left;
+      transition: transform 0.3s, background 0.4s;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* MODIFICAÇÃO: Torna a imagem do card clicável */
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      cursor: pointer; /* Adicionado */
+    }
+
+    .card a {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      /* Novo estilo para o botão de voltar */
+      display: inline-block; 
+      margin-right: 15px;
+    }
+
+    /* Estilo para o botão de voltar */
+    .card .back-btn {
+        background: var(--accent);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background 0.3s;
+    }
+    
+    .card .back-btn:hover {
+        background: #0097a7;
+    }
+
+    /* ===== GALERIA (AJUSTADO PARA CENTRALIZAR) ===== */
+    .galeria {
+      padding: 80px 10%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      text-align: center;
+      /* --- CORREÇÃO: Centraliza o conteúdo da galeria dentro do contêiner --- */
+      justify-content: center; 
+    }
+
+    .galeria h2 {
+      grid-column: 1 / -1;
+      color: var(--accent);
+      margin-bottom: 30px;
+    }
+
+    .galeria img {
+      width: 100%;
+      max-width: 250px; /* Limita o tamanho máximo de cada imagem em telas maiores */
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s;
+      cursor: pointer;
+      /* Garante que imagens menores também fiquem centralizadas na célula do grid */
+      margin: 0 auto; 
+    }
+
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+
+    /* --- NOVOS ESTILOS PARA MODAL DE GALERIA E POP-UP (MANTIDOS E AJUSTADOS) --- */
+
+    /* Modal (Fundo escuro que cobre tudo) */
+    .modal {
+      display: none; /* CORREÇÃO CRÍTICA: Garante que o modal está escondido por padrão ao carregar a página */
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      animation: fadeInModal 0.3s ease;
+      /* display: flex; REMOVIDO DAQUI */ 
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    /* Conteúdo da Imagem no Modal (AJUSTADO) */
+    .modal-content {
+      display: block;
+      width: auto; 
+      height: auto; 
+      max-width: 90vw; 
+      max-height: 90vh; 
+      object-fit: contain;
+    }
+
+    /* Botão de fechar (X) */
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @keyframes fadeInModal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Pop-up de Feedback (Estilo moderno) */
+    #feedback-popup {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: var(--accent);
+      color: white;
+      text-align: center;
+      border-radius: 8px;
+      padding: 16px;
+      position: fixed;
+      z-index: 2001; /* Acima do modal */
+      left: 50%;
+      top: 30px;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.5s, top 0.5s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    #feedback-popup.show {
+      visibility: visible;
+      opacity: 1;
+      top: 50px;
+    }
+
+    /* --- FIM DOS ESTILOS DE MODAL E POP-UP --- */
+
+    /* --- ESTILO PARA O BOTÃO 'X' NAS PÁGINAS DE PROJETO (ALTERAÇÃO 3) --- */
+    .close-btn {
+        position: fixed; 
+        top: 20px;
+        right: 30px;
+        font-size: 30px;
+        cursor: pointer;
+        color: #333; 
+        background-color: #fff;
+        border: 2px solid #333;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        line-height: 35px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        z-index: 10000;
+        transition: all 0.2s;
+    }
+
+    .close-btn:hover {
+        color: #00bcd4;
+        border-color: #00bcd4;
+        transform: scale(1.1);
+    }
+
+
+    /* ===== CONTACTO (CSS AJUSTADO AQUI) ===== */
+    .contacto {
+      padding: 100px 10%;
+      text-align: center;
+    }
+
+    .contacto h2 {
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .contacto p {
+      margin-bottom: 15px;
+    }
+    
+    /* Novo estilo para o formulário */
+    .contacto form {
+        margin-top: 30px;
+        max-width: 600px;
+        margin-inline: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Espaço entre os campos */
+    }
+
+    /* Estilo para inputs e textarea terem largura total do contêiner */
+    .contacto input,
+    .contacto textarea {
+        width: 100%; /* Garante que todos tenham a mesma largura */
+        padding: 10px;
+        border: 1px solid var(--accent);
+        border-radius: 5px;
+        background: var(--card);
+        color: var(--text);
+        resize: vertical; /* Permite redimensionar apenas verticalmente (útil para textarea) */
+    }
+
+    .contacto .contact-options {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 5px; /* Ajuste para espaçar do formulário */
+    }
+
+    .contacto .contact-options button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .contacto .contact-options .whatsapp-btn {
+        background: #25d366;
+        color: white;
+    }
+
+    .contacto .contact-options .whatsapp-btn:hover {
+        background: #1da851;
+        transform: translateY(-2px);
+    }
+
+    .contacto .contact-options .email-btn {
+        background: var(--accent);
+        color: white;
+    }
+    
+    .contacto .contact-options .email-btn:hover {
+        background: #0097a7;
+        transform: translateY(-2px);
+    }
+
+
+    /* ===== RODAPÉ ===== */
+    footer {
+      background: var(--nav);
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+    }
+
+    /* ===== ANIMAÇÕES ===== */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 15px 20px;
+      }
+
+      .hero h2 {
+        font-size: 2em;
+      }
+
+      .sobre {
+        padding: 80px 5%;
+        flex-direction: column;
+      }
+
+      .card img {
+        height: 180px;
+      }
+
+      .aprendizado,
+      .parallax-bloco {
+        height: 350px;
+      }
+
+      .aprendizado h2 {
+        font-size: 1.8em;
+      }
+
+      .aprendizado p {
+        font-size: 1em;
+      }
+
+      .contacto .contact-options {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h1>Neves Cutana</h1>
+    <ul>
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <button id="darkToggle">🌙</button>
+  </nav>
+
+  <section class="hero" id="inicio">
+    <h2>Transformando Ideias em Soluções Digitais</h2>
+  </section>
+
+  <section class="sobre" id="sobre">
+    <div class="perfil" 
+        style="background-image: url('imagem/perfilCutana.jpeg');"
+        data-src="imagem/perfilCutana.jpeg" 
+        id="perfilImage">
+    </div>
+    <div class="sobre-texto">
+      <h2>Sobre Mim</h2>
+      <p> 
+
+Chamo-me Neves Sergio Cutana, tenho 26 anos e sou natural de Laulane, onde iniciei o meu percurso académico. Frequentei a Escola Primária de Laulane, onde desenvolvi o gosto pelo aprendizado, e posteriormente a Escola Secundária de Laulane, onde consolidei a minha base educacional e despertei o interesse por áreas tecnológicas.
+
+Com o objetivo de adquirir conhecimentos práticos, realizei o Curso Básico de Informática e o de Eletricidade Básica na instituição Weck Up, formações que me proporcionaram uma compreensão mais ampla sobre tecnologia e sistemas elétricos, fortalecendo as minhas competências técnicas.
+
+Atualmente, exerço funções profissionais na ACIPOL e sou estudante do Instituto Superior Monitor, onde frequento o curso de Gestão e Informática. Acredito que a integração entre a gestão e a tecnologia é fundamental para o desenvolvimento de soluções inovadoras e sustentáveis, capazes de responder às exigências do mundo moderno.
+
+Sou uma pessoa comprometida, curiosa e dedicada ao aprendizado contínuo. Vejo a educação como uma ferramenta transformadora, e busco constantemente evoluir tanto no campo profissional como pessoal, contribuindo positivamente para o crescimento das instituições onde atuo e para a sociedade em geral.</p>
+      <p>Valorizo o aprendizado constante, a inovação e a autonomia. Acredito que o futuro pertence a quem se adapta rapidamente e pensa de forma criativa.</p>
+    </div>
+  </section>
+
+  <div class="parallax-bloco">
+    <h3>“Criar, Aprender e Evoluir — Todos os Dias.”</h3>
+  </div>
+
+  <section class="projetos" id="projetos">
+    <h2>Projetos em Destaque</h2>
+    <div class="cards">
+      <div class="card">
+        <img class="clickable-image" src="imagem/WhatsApp Image 2025-11-04 at 2.04.08 PM (1).jpeg" data-src="imagem/WhatsApp Image 2025-11-04 at 2.04.08 PM (1).jpeg" alt="Carrinho de Compras">
+        <h3>Carrinho de Compras</h3>
+        <p>Um sistema funcional de carrinho de compras com HTML, CSS e JavaScript, simulando o processo de adicionar e remover produtos.</p>
+        <a href="Carinha de Compra.html">Ver Projeto</a>
+        <a href="#projetos" class="back-btn">Voltar</a>
+      </div>
+
+      <div class="card">
+        <img class="clickable-image" src="imagem/WhatsApp Image 2025-11-04 at 1.58.43 PM.jpeg" data-src="imagem/WhatsApp Image 2025-11-04 at 1.58.43 PM.jpeg" alt="Login e Registro">
+        <h3>Login e Registro</h3>
+        <p>Interface moderna para login e criação de contas com validação e design responsivo.</p>
+        <a href="Login.html">Ver Projeto</a>
+        <a href="#projetos" class="back-btn">Voltar</a>
+      </div>
+
+      <div class="card">
+        <img class="clickable-image" src="imagem/WhatsApp Image 2025-11-04 at 2.04.08 PM.jpeg" data-src="imagem/WhatsApp Image 2025-11-04 at 2.04.08 PM.jpeg" alt="Registro de Visitantes">
+        <h3>Registro de Visitantes - ACIPOL</h3>
+        <p>Projeto para registar e gerir visitas na ACIPOL, com foco na segurança e eficiência.</p>
+        <a href="Registo de viaturas.html">Ver Projeto</a>
+        <a href="#projetos" class="back-btn">Voltar</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="aprendizado">
+    <h2>Meu Caminho no Desenvolvimento Web</h2>
+    <p>Aprender HTML, CSS e JavaScript foi mais do que um simples estudo — foi o início de uma jornada de autodescobrimento.  
+    Cada linha de código escrita é um passo para dominar a arte de criar interfaces que unem funcionalidade e beleza.  
+    Estou constantemente aperfeiçoando minhas habilidades para transformar ideias em experiências digitais únicas.</p>
+  </div>
+
+  <section class="galeria" id="galeria">
+    <h2>Galeria de Fotos</h2>
+    <img class="clickable-image" src="imagem/G3 foto.jpeg" data-src="imagem/G3 foto.jpeg" alt="Foto 1">
+    <img class="clickable-image" src="imagem/F15 foto.jpeg" data-src="imagem/F15 foto.jpeg" alt="Foto 2">
+    <img class="clickable-image" src="imagem/G2 foto.jpeg" data-src="imagem/G2 foto.jpeg" alt="Foto 3">
+    <img class="clickable-image" src="imagem/comptFoto.jpeg" data-src="imagem/comptFoto.jpeg" alt="Foto 4">
+    </section>
+
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <section class="contacto" id="contacto">
+    <h2>Contacte-me</h2>
+    <p>Ficarei feliz em responder às suas perguntas ou discutir projetos.</p>
+
+    <form id="contactForm">
+      <input type="text" id="contactName" placeholder="Seu nome" required>
+      <input type="email" id="contactEmail" placeholder="Seu email" required>
+      <textarea id="contactMessage" rows="4" placeholder="Escreva sua mensagem..." required></textarea>
+      
+      <div class="contact-options">
+          <button type="button" class="whatsapp-btn" onclick="sendToWhatsApp()">
+              <span style="font-size: 1.2em;">&#x1F4AC;</span> Enviar por WhatsApp
+          </button>
+          <button type="button" class="email-btn" onclick="sendToEmail()">
+              <span style="font-size: 1.2em;">&#x2709;</span> Enviar por E-mail
+          </button>
+      </div>
+    </form>
+    
+    <p style="margin-top: 40px;">Email: <a href="mailto:nevescutana@gmail.com">nevescutana@gmail.com</a></p>
+    <p>Telefone: <a href="tel:+258865797736">+258 865 797 736</a> / <a href="tel:+258846797736">+258 846 797 736</a></p>
+    <p>GitHub: <a href="https://github.com/nevescutana" target="_blank">github.com/nevescutana</a></p>
+    <p>Instagram: <a href="https://www.instagram.com/" target="_blank">@nevescutana</a></p>
+
+  </section>
+
+  <div id="feedback-popup"></div>
+
+  <footer>
+    © 2025 Neves Sergio Cutana — Todos os direitos reservados.
+  </footer>
+
+  <script>
+    const whatsappNumber = '258865797736'; 
+    const personalEmail = 'nevescutana@gmail.com'; 
+
+    // Função para exibir o pop-up de feedback
+    function showFeedback(message) {
+        const popup = document.getElementById('feedback-popup');
+        popup.textContent = message;
+        popup.classList.add('show');
+        
+        // Remove o pop-up após 3 segundos
+        setTimeout(() => {
+            popup.classList.remove('show');
+            // Limpa o formulário após feedback (opcional)
+            document.getElementById('contactForm').reset();
+        }, 3000); 
+    }
+
+    // Função para enviar mensagem via WhatsApp
+    function sendToWhatsApp() {
+        const name = document.getElementById('contactName').value.trim();
+        const email = document.getElementById('contactEmail').value.trim();
+        const message = document.getElementById('contactMessage').value.trim();
+        
+        if (!name || !email || !message) {
+            alert("Por favor, preencha todos os campos (Nome, Email e Mensagem) antes de enviar.");
+            return;
+        }
+
+        const encodedMessage = `Olá, Neves!\n\nRecebi uma mensagem do seu website:\nNome: ${name}\nEmail: ${email}\n\nMensagem:\n${message}`;
+        
+        // Cria o link do WhatsApp
+        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(encodedMessage)}`;
+        
+        // Abre o WhatsApp em nova aba
+        window.open(whatsappLink, '_blank');
+        
+        // Exibe o feedback
+        showFeedback("Redirecionando para o WhatsApp... Sua mensagem está pronta para ser enviada!");
+    }
+
+    // Função para enviar mensagem via E-mail
+    function sendToEmail() {
+        const name = document.getElementById('contactName').value.trim();
+        const email = document.getElementById('contactEmail').value.trim();
+        const message = document.getElementById('contactMessage').value.trim();
+
+        if (!name || !email || !message) {
+            alert("Por favor, preencha todos os campos (Nome, Email e Mensagem) antes de enviar.");
+            return;
+        }
+
+        const subject = encodeURIComponent(`Contato do Website de ${name}`);
+        const body = encodeURIComponent(`Nome: ${name}\nEmail: ${email}\n\nMensagem:\n${message}`);
+        
+        // Cria o link mailto
+        window.location.href = `mailto:${personalEmail}?subject=${subject}&body=${body}`;
+
+        // Exibe o feedback
+        showFeedback("Abrindo seu cliente de e-mail. A mensagem será enviada pelo seu e-mail.");
+    }
+    
+    // Alternar modo escuro
+    const toggle = document.getElementById('darkToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      toggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    });
+
+    // === LÓGICA DO MODAL DA GALERIA (CORRIGIDO E AMPLIADO) ===
+
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    
+    // Altera o seletor para incluir todas as imagens e a div do perfil
+    const clickableElements = document.querySelectorAll('.galeria .clickable-image, .cards .clickable-image, #perfilImage');
+    const closeBtn = document.querySelector('.close');
+
+    // 1. Abre o modal ao clicar em uma imagem ou perfil
+    clickableElements.forEach(element => {
+        element.addEventListener('click', function() {
+            // Tenta obter o data-src do elemento.
+            // Para .perfil, a imagem é o background-image.
+            let imageSource = this.getAttribute('data-src');
+
+            if (imageSource) {
+                modalImg.src = imageSource; 
+                modal.style.display = "flex"; 
+            } else {
+                console.error("Caminho da imagem não encontrado.");
+            }
+        });
+    });
+
+    // 2. Fecha o modal ao clicar no 'X'
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = "none";
+    });
+
+    // 3. Fecha o modal ao clicar fora da imagem
+    window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    // 4. Fecha o modal ao pressionar a tecla ESC
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape" && modal.style.display === "flex") {
+            modal.style.display = "none";
+        }
+    });
+
+  </script>
+
+</body>
+</html>
